@@ -815,7 +815,7 @@ ${desc ? `\n📝 পণ্যের বিবরণ:\n${desc}\n` : ''}
 
         {/* 3. ক্যাটাগরি সমূহ (Category Showcase Section with UI Animations) */}
         {displayCategories.length > 0 && (
-          <section className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 pt-2 pb-2 space-y-4">
+          <section className="w-full max-w-[1920px] mx-auto px-3 sm:px-6 lg:px-8 xl:px-10 pt-2 pb-2 space-y-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2.5">
                 <span className="w-5 h-1.5 bg-[#009245] rounded-full inline-block" />
@@ -937,7 +937,7 @@ ${desc ? `\n📝 পণ্যের বিবরণ:\n${desc}\n` : ''}
         )}
 
         {/* 4. "জনপ্রিয় পণ্য (পছন্দকৃত)" Section using 100% Identical Reseller Product Cards with emerald-500 border */}
-        <section id="catalog-section" className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-5 space-y-4">
+        <section id="catalog-section" className="w-full max-w-[1920px] mx-auto px-3 sm:px-6 lg:px-8 xl:px-10 py-3 sm:py-5 space-y-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2.5">
               <span className="w-5 h-1.5 bg-[#009245] rounded-full inline-block" />
