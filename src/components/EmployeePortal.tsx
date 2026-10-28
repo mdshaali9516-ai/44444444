@@ -707,8 +707,8 @@ export const EmployeePortal: React.FC = () => {
   // ----------------------------------------------------
   return (
     <div className={`min-h-screen bg-slate-50/70 text-slate-900 ${resellerPreviewProduct ? 'pb-2 sm:pb-3 min-h-0' : 'pb-24'} w-full max-w-full overflow-x-hidden`}>
-      {/* 3. Main Dynamic Content Area */}
-      <div className={`max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 ${resellerPreviewProduct ? 'pt-1 sm:pt-2' : 'pt-2 sm:pt-4'}`}>
+      {/* 3. Main Dynamic Content Area (Full Display Responsive Layout matching Public Page) */}
+      <div className={`w-full max-w-[1920px] mx-auto px-3 sm:px-6 lg:px-8 xl:px-10 ${resellerPreviewProduct ? 'pt-1 sm:pt-2' : 'pt-2 sm:pt-4'}`}>
         {resellerTab === 'dashboard' && (
           <ResellerDashboardTab
             salesList={salesList}

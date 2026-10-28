@@ -114,8 +114,8 @@ export const ResellerProfileHeader: React.FC<ResellerProfileHeaderProps> = ({ on
   return (
     <>
       {/* Premium Profile Header Container */}
-      <div className="bg-white border-b border-slate-200/80 shadow-xs">
-        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-3 sm:py-6">
+      <div className="bg-white border-b border-slate-300 shadow-xs">
+        <div className="w-full max-w-[1920px] mx-auto px-3 sm:px-6 lg:px-8 xl:px-10 py-3 sm:py-6">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-5">
             
             {/* Left: Avatar & Reseller Info */}

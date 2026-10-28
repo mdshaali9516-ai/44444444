@@ -169,7 +169,7 @@ export const ResellerDashboardTab: React.FC<ResellerDashboardTabProps> = ({
         <ResellerTrainingBanner onLearnClick={() => onSwitchTab('training')} />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 sm:space-y-10">
+      <div className="w-full max-w-[1920px] mx-auto space-y-6 sm:space-y-10">
         
         {/* 2. Financial Balance Summary */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-5 w-full">
@@ -177,7 +177,7 @@ export const ResellerDashboardTab: React.FC<ResellerDashboardTabProps> = ({
           {/* Card 1: Available Balance */}
           <div 
             onClick={() => onSwitchTab('withdrawal')}
-            className="bg-emerald-50/40 border border-emerald-200/90 hover:border-emerald-300 hover:bg-emerald-50/70 rounded-2xl p-3 sm:p-5 shadow-xs flex items-center gap-2.5 sm:gap-4 relative overflow-hidden group transition-all cursor-pointer"
+            className="bg-emerald-50/40 border border-emerald-300 hover:border-emerald-400 hover:bg-emerald-50/70 rounded-2xl p-3 sm:p-5 shadow-xs flex items-center gap-2.5 sm:gap-4 relative overflow-hidden group transition-all cursor-pointer"
           >
             <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-emerald-100/70 text-emerald-600 flex items-center justify-center shrink-0 shadow-xs">
               <Wallet className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -199,7 +199,7 @@ export const ResellerDashboardTab: React.FC<ResellerDashboardTabProps> = ({
           </div>
 
           {/* Card 2: Total Earnings */}
-          <div className="bg-sky-50/40 border border-sky-200/90 hover:border-sky-300 hover:bg-sky-50/70 rounded-2xl p-3 sm:p-5 shadow-xs flex items-center gap-2.5 sm:gap-4 relative overflow-hidden group transition-all">
+          <div className="bg-sky-50/40 border border-sky-300 hover:border-sky-400 hover:bg-sky-50/70 rounded-2xl p-3 sm:p-5 shadow-xs flex items-center gap-2.5 sm:gap-4 relative overflow-hidden group transition-all">
             <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-sky-100/70 text-sky-600 flex items-center justify-center shrink-0 shadow-xs">
               <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
@@ -220,7 +220,7 @@ export const ResellerDashboardTab: React.FC<ResellerDashboardTabProps> = ({
           </div>
 
           {/* Card 3: Total Withdrawn */}
-          <div className="bg-violet-50/40 border border-violet-200/90 hover:border-violet-300 hover:bg-violet-50/70 rounded-2xl p-3 sm:p-5 shadow-xs flex items-center gap-2.5 sm:gap-4 relative overflow-hidden group transition-all">
+          <div className="bg-violet-50/40 border border-violet-300 hover:border-violet-400 hover:bg-violet-50/70 rounded-2xl p-3 sm:p-5 shadow-xs flex items-center gap-2.5 sm:gap-4 relative overflow-hidden group transition-all">
             <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-violet-100/70 text-violet-600 flex items-center justify-center shrink-0 shadow-xs">
               <ArrowDownLeft className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
@@ -241,7 +241,7 @@ export const ResellerDashboardTab: React.FC<ResellerDashboardTabProps> = ({
           </div>
 
           {/* Card 4: Pending Withdrawal */}
-          <div className="bg-amber-50/40 border border-amber-200/90 hover:border-amber-300 hover:bg-amber-50/70 rounded-2xl p-3 sm:p-5 shadow-xs flex items-center gap-2.5 sm:gap-4 relative overflow-hidden group transition-all">
+          <div className="bg-amber-50/40 border border-amber-300 hover:border-amber-400 hover:bg-amber-50/70 rounded-2xl p-3 sm:p-5 shadow-xs flex items-center gap-2.5 sm:gap-4 relative overflow-hidden group transition-all">
             <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-amber-100/70 text-amber-600 flex items-center justify-center shrink-0 shadow-xs">
               <Clock className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>

@@ -267,7 +267,7 @@ export const ResellerWebsiteGeneratorTab: React.FC = () => {
   };
 
   return (
-    <div className="space-y-4 max-w-2xl mx-auto pb-24 animate-in fade-in duration-200">
+    <div className="space-y-4 sm:space-y-6 w-full max-w-[1920px] mx-auto pb-24 animate-in fade-in duration-200">
       
       {/* Hidden File Input for Gallery Logo Pick */}
       <input
@@ -279,7 +279,7 @@ export const ResellerWebsiteGeneratorTab: React.FC = () => {
       />
 
       {/* TOP HEADER: Clean Back Button & Title Only (No Clutter) */}
-      <div className="bg-white rounded-2xl p-3 sm:p-4 border-2 border-slate-300 shadow-xs flex items-center justify-between gap-3">
+      <div className="bg-white rounded-2xl p-3 sm:p-4 border border-slate-300 shadow-xs flex items-center justify-between gap-3">
         <div className="flex items-center gap-2.5">
           {hasActiveStore && isEditing && (
             <button
@@ -302,7 +302,7 @@ export const ResellerWebsiteGeneratorTab: React.FC = () => {
         </div>
 
         <div className="shrink-0">
-          <span className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-black border-2 ${
+          <span className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-black border ${
             isPaid
               ? 'bg-emerald-50 text-[#009245] border-emerald-300'
               : isTrialExpired
@@ -328,7 +328,7 @@ export const ResellerWebsiteGeneratorTab: React.FC = () => {
           Clicking "এডিট অপশন" reveals the setup form again!
          ========================================================================= */}
       {hasActiveStore && !isEditing && (
-        <div className="bg-white rounded-3xl p-5 sm:p-6 border-2 border-emerald-400 shadow-sm space-y-5 animate-in fade-in duration-200">
+        <div className="bg-white rounded-3xl p-5 sm:p-6 border border-emerald-300 shadow-sm space-y-5 animate-in fade-in duration-200">
           
           {/* EXPLICIT SUCCESS BANNER (Shown immediately upon store save/update without page refresh) */}
           {createdSuccess && (
@@ -625,169 +625,174 @@ export const ResellerWebsiteGeneratorTab: React.FC = () => {
           VIEW 2: COMPACT CLEAN SETUP & EDIT FORM (Mobile-optimized, zero clutter)
          ========================================================================= */}
       {(!hasActiveStore || isEditing) && (
-        <form onSubmit={handleSaveStore} className="space-y-4">
+        <form onSubmit={handleSaveStore} className="space-y-4 sm:space-y-6">
           
-          {/* SECTION 1: LOGO & SHOP NAME */}
-          <div className="bg-white rounded-3xl p-4 sm:p-5 border-2 border-slate-300 shadow-xs space-y-4">
-            
-            {/* Logo Picker (Compact layout for mobile) */}
-            <div className="space-y-2">
-              <label className="text-xs font-black text-slate-800 block">
-                {lang === 'bn' ? 'দোকানের লোগো (গ্যালারি থেকে ফটো নির্বাচন)' : 'Shop Logo'}
-              </label>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 items-start">
+            {/* COLUMN 1: SECTION 1: LOGO & SHOP NAME */}
+            <div className="bg-white rounded-3xl p-4 sm:p-6 border border-slate-300 shadow-xs space-y-4">
+              
+              {/* Logo Picker (Compact layout for mobile & desktop) */}
+              <div className="space-y-2">
+                <label className="text-xs font-black text-slate-800 block">
+                  {lang === 'bn' ? 'দোকানের লোগো (গ্যালারি থেকে ফটো নির্বাচন)' : 'Shop Logo'}
+                </label>
 
-              <div className="flex items-center gap-3.5 p-3 rounded-2xl bg-slate-50 border-2 border-slate-300">
-                <div className="w-16 h-16 rounded-2xl overflow-hidden border-2 border-emerald-500 bg-white flex items-center justify-center shrink-0 shadow-2xs">
-                  {storeLogoUrl ? (
-                    <img src={storeLogoUrl} alt="Store Logo" className="w-full h-full object-cover" />
-                  ) : (
-                    <ImageIcon className="w-6 h-6 text-slate-300" />
-                  )}
-                </div>
-
-                <div className="flex-1 space-y-1.5">
-                  <div className="flex items-center gap-2 flex-wrap">
-                    <button
-                      type="button"
-                      onClick={() => fileInputRef.current?.click()}
-                      className="px-3.5 py-1.5 bg-[#009245] hover:bg-[#007a38] text-white text-xs font-black rounded-xl inline-flex items-center gap-1.5 shadow-2xs transition-colors cursor-pointer"
-                    >
-                      <Upload className="w-3.5 h-3.5" />
-                      <span>{lang === 'bn' ? 'গ্যালারি থেকে লোগো দিন' : 'Choose Logo'}</span>
-                    </button>
-
-                    {storeLogoUrl && (
-                      <button
-                        type="button"
-                        onClick={() => {
-                          setStoreLogoUrl('');
-                          showToast(lang === 'bn' ? 'লোগো মুছে ফেলা হয়েছে' : 'Logo removed');
-                        }}
-                        className="px-2.5 py-1.5 bg-rose-50 text-rose-600 hover:bg-rose-100 text-xs font-bold rounded-xl transition-colors cursor-pointer inline-flex items-center gap-1"
-                      >
-                        <Trash2 className="w-3 h-3" />
-                        <span>মুছুন</span>
-                      </button>
+                <div className="flex items-center gap-3.5 p-3 rounded-2xl bg-slate-50 border border-slate-300">
+                  <div className="w-16 h-16 rounded-2xl overflow-hidden border-2 border-emerald-500 bg-white flex items-center justify-center shrink-0 shadow-2xs">
+                    {storeLogoUrl ? (
+                      <img src={storeLogoUrl} alt="Store Logo" className="w-full h-full object-cover" />
+                    ) : (
+                      <ImageIcon className="w-6 h-6 text-slate-300" />
                     )}
                   </div>
-                  <p className="text-[10.5px] text-slate-400 font-medium">
-                    মোবাইলের গ্যালারি থেকে যেকোনো ছবি নির্বাচন করুন
-                  </p>
+
+                  <div className="flex-1 space-y-1.5">
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <button
+                        type="button"
+                        onClick={() => fileInputRef.current?.click()}
+                        className="px-3.5 py-1.5 bg-[#009245] hover:bg-[#007a38] text-white text-xs font-black rounded-xl inline-flex items-center gap-1.5 shadow-2xs transition-colors cursor-pointer"
+                      >
+                        <Upload className="w-3.5 h-3.5" />
+                        <span>{lang === 'bn' ? 'গ্যালারি থেকে লোগো দিন' : 'Choose Logo'}</span>
+                      </button>
+
+                      {storeLogoUrl && (
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setStoreLogoUrl('');
+                            showToast(lang === 'bn' ? 'লোগো মুছে ফেলা হয়েছে' : 'Logo removed');
+                          }}
+                          className="px-2.5 py-1.5 bg-rose-50 text-rose-600 hover:bg-rose-100 text-xs font-bold rounded-xl transition-colors cursor-pointer inline-flex items-center gap-1"
+                        >
+                          <Trash2 className="w-3 h-3" />
+                          <span>মুছুন</span>
+                        </button>
+                      )}
+                    </div>
+                    <p className="text-[10.5px] text-slate-400 font-medium">
+                      মোবাইলের গ্যালারি থেকে যেকোনো ছবি নির্বাচন করুন
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Store Name Input */}
+              <div className="space-y-1.5">
+                <label className="text-xs font-black text-slate-800 block">
+                  {lang === 'bn' ? 'দোকানের নাম *' : 'Shop Name *'}
+                </label>
+                <input
+                  type="text"
+                  value={storeName}
+                  onChange={(e) => handleStoreNameChange(e.target.value)}
+                  placeholder="যেমন: ফ্যাশন প্যালেস এক্সপ্রেস"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs sm:text-sm font-bold text-slate-900 focus:outline-none focus:border-[#009245] shadow-3xs"
+                  required
+                />
+              </div>
+
+              {/* Shop Slug / URL */}
+              <div className="space-y-1.5">
+                <label className="text-xs font-black text-slate-800 block">
+                  {lang === 'bn' ? 'শপ ইউআরএল (স্লাগ) *' : 'Shop URL Slug *'}
+                </label>
+                <div className="flex items-center gap-2">
+                  <span className="px-3 py-2.5 rounded-xl bg-slate-100 border border-slate-300 text-xs font-mono font-bold text-slate-600 shrink-0 select-none">
+                    /shop/
+                  </span>
+                  <input
+                    type="text"
+                    value={slug}
+                    onChange={(e) => setSlug(e.target.value.toLowerCase().replace(/[^a-z0-9_]/g, ''))}
+                    placeholder="fashion_palace"
+                    className="flex-1 px-3 py-2.5 rounded-xl border border-slate-300 text-xs sm:text-sm font-mono font-bold text-slate-900 focus:outline-none focus:border-[#009245] shadow-3xs"
+                    required
+                  />
+                </div>
+                <p className="text-[10.5px] text-slate-400 font-mono truncate">
+                  {fullUrl}
+                </p>
+              </div>
+
+            </div>
+
+            {/* COLUMN 2: SECTION 2 (CONTACT NUMBERS) & SECTION 3 (THEME COLOR PICKER) */}
+            <div className="space-y-4 sm:space-y-6">
+              {/* SECTION 2: CONTACT NUMBERS */}
+              <div className="bg-white rounded-3xl p-4 sm:p-6 border border-slate-300 shadow-xs space-y-3.5">
+                <h3 className="text-xs font-black text-slate-800 pb-1 border-b border-slate-200 flex items-center gap-1.5">
+                  <Phone className="w-3.5 h-3.5 text-emerald-600" />
+                  <span>{lang === 'bn' ? 'যোগাযোগ ও WhatsApp নম্বর' : 'Contact Numbers'}</span>
+                </h3>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div className="space-y-1.5">
+                    <label className="text-[11px] font-black text-slate-700 flex items-center gap-1">
+                      <MessageCircle className="w-3 h-3 text-emerald-600" />
+                      <span>WhatsApp নম্বর *</span>
+                    </label>
+                    <input
+                      type="text"
+                      value={whatsappNumber}
+                      onChange={(e) => setWhatsappNumber(e.target.value)}
+                      placeholder="01712345678"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs sm:text-sm font-bold text-slate-900 focus:outline-none focus:border-[#009245] shadow-3xs"
+                      required
+                    />
+                  </div>
+
+                  <div className="space-y-1.5">
+                    <label className="text-[11px] font-black text-slate-700 flex items-center gap-1">
+                      <Phone className="w-3 h-3 text-slate-600" />
+                      <span>যোগাযোগ নম্বর (হেল্পলাইন) *</span>
+                    </label>
+                    <input
+                      type="text"
+                      value={phoneNum}
+                      onChange={(e) => setPhoneNum(e.target.value)}
+                      placeholder="01712345678"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs sm:text-sm font-bold text-slate-900 focus:outline-none focus:border-[#009245] shadow-3xs"
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* SECTION 3: THEME COLOR BOX PICKER */}
+              <div className="bg-white rounded-3xl p-4 sm:p-6 border border-slate-300 shadow-xs space-y-3">
+                <h3 className="text-xs font-black text-slate-800 pb-1 border-b border-slate-200 flex items-center gap-1.5">
+                  <Palette className="w-3.5 h-3.5 text-emerald-600" />
+                  <span>{lang === 'bn' ? 'ওয়েবসাইটের থিম কালার বক্স' : 'Theme Color Box'}</span>
+                </h3>
+
+                <p className="text-[11px] text-slate-500 font-medium">
+                  কালার বক্সে ক্লিক করে আপনার পছন্দের যেকোনো ব্র্যান্ড কালার সিলেক্ট করুন:
+                </p>
+
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  {/* Theme Color Picker */}
+                  <div className="space-y-2">
+                    <label className="text-[11px] font-black text-slate-700">থিম কালার</label>
+                    <input type="color" value={themeColor} onChange={(e) => setThemeColor(e.target.value)} className="w-full h-10 rounded-xl cursor-pointer border border-slate-300" />
+                  </div>
+                  {/* Header Color Picker */}
+                  <div className="space-y-2">
+                    <label className="text-[11px] font-black text-slate-700">হেডার কালার</label>
+                    <input type="color" value={headerColor} onChange={(e) => setHeaderColor(e.target.value)} className="w-full h-10 rounded-xl cursor-pointer border border-slate-300" />
+                  </div>
+                  {/* Footer Color Picker */}
+                  <div className="space-y-2">
+                    <label className="text-[11px] font-black text-slate-700">ফুটার কালার</label>
+                    <input type="color" value={footerColor} onChange={(e) => setFooterColor(e.target.value)} className="w-full h-10 rounded-xl cursor-pointer border border-slate-300" />
+                  </div>
                 </div>
               </div>
             </div>
-
-            {/* Store Name Input */}
-            <div className="space-y-1.5">
-              <label className="text-xs font-black text-slate-800 block">
-                {lang === 'bn' ? 'দোকানের নাম *' : 'Shop Name *'}
-              </label>
-              <input
-                type="text"
-                value={storeName}
-                onChange={(e) => handleStoreNameChange(e.target.value)}
-                placeholder="যেমন: ফ্যাশন প্যালেস এক্সপ্রেস"
-                className="w-full px-3.5 py-2.5 rounded-xl border-2 border-slate-300 text-xs sm:text-sm font-bold text-slate-900 focus:outline-none focus:border-[#009245] shadow-3xs"
-                required
-              />
-            </div>
-
-            {/* Shop Slug / URL */}
-            <div className="space-y-1.5">
-              <label className="text-xs font-black text-slate-800 block">
-                {lang === 'bn' ? 'শপ ইউআরএল (স্লাগ) *' : 'Shop URL Slug *'}
-              </label>
-              <div className="flex items-center gap-2">
-                <span className="px-3 py-2.5 rounded-xl bg-slate-100 border-2 border-slate-300 text-xs font-mono font-bold text-slate-600 shrink-0 select-none">
-                  /shop/
-                </span>
-                <input
-                  type="text"
-                  value={slug}
-                  onChange={(e) => setSlug(e.target.value.toLowerCase().replace(/[^a-z0-9_]/g, ''))}
-                  placeholder="fashion_palace"
-                  className="flex-1 px-3 py-2.5 rounded-xl border-2 border-slate-300 text-xs sm:text-sm font-mono font-bold text-slate-900 focus:outline-none focus:border-[#009245] shadow-3xs"
-                  required
-                />
-              </div>
-              <p className="text-[10.5px] text-slate-400 font-mono truncate">
-                {fullUrl}
-              </p>
-            </div>
-
           </div>
 
-          {/* SECTION 2: CONTACT NUMBERS */}
-          <div className="bg-white rounded-3xl p-4 sm:p-5 border-2 border-slate-300 shadow-xs space-y-3.5">
-            <h3 className="text-xs font-black text-slate-800 pb-1 border-b border-slate-200 flex items-center gap-1.5">
-              <Phone className="w-3.5 h-3.5 text-emerald-600" />
-              <span>{lang === 'bn' ? 'যোগাযোগ ও WhatsApp নম্বর' : 'Contact Numbers'}</span>
-            </h3>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <div className="space-y-1.5">
-                <label className="text-[11px] font-black text-slate-700 flex items-center gap-1">
-                  <MessageCircle className="w-3 h-3 text-emerald-600" />
-                  <span>WhatsApp নম্বর *</span>
-                </label>
-                <input
-                  type="text"
-                  value={whatsappNumber}
-                  onChange={(e) => setWhatsappNumber(e.target.value)}
-                  placeholder="01712345678"
-                  className="w-full px-3.5 py-2.5 rounded-xl border-2 border-slate-300 text-xs sm:text-sm font-bold text-slate-900 focus:outline-none focus:border-[#009245] shadow-3xs"
-                  required
-                />
-              </div>
-
-              <div className="space-y-1.5">
-                <label className="text-[11px] font-black text-slate-700 flex items-center gap-1">
-                  <Phone className="w-3 h-3 text-slate-600" />
-                  <span>যোগাযোগ নম্বর (হেল্পলাইন) *</span>
-                </label>
-                <input
-                  type="text"
-                  value={phoneNum}
-                  onChange={(e) => setPhoneNum(e.target.value)}
-                  placeholder="01712345678"
-                  className="w-full px-3.5 py-2.5 rounded-xl border-2 border-slate-300 text-xs sm:text-sm font-bold text-slate-900 focus:outline-none focus:border-[#009245] shadow-3xs"
-                  required
-                />
-              </div>
-            </div>
-          </div>
-
-          {/* SECTION 3: THEME COLOR BOX PICKER */}
-          <div className="bg-white rounded-3xl p-4 sm:p-5 border-2 border-slate-300 shadow-xs space-y-3">
-            <h3 className="text-xs font-black text-slate-800 pb-1 border-b border-slate-200 flex items-center gap-1.5">
-              <Palette className="w-3.5 h-3.5 text-emerald-600" />
-              <span>{lang === 'bn' ? 'ওয়েবসাইটের থিম কালার বক্স' : 'Theme Color Box'}</span>
-            </h3>
-
-            <p className="text-[11px] text-slate-500 font-medium">
-              কালার বক্সে ক্লিক করে আপনার পছন্দের যেকোনো ব্র্যান্ড কালার সিলেক্ট করুন:
-            </p>
-
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              {/* Theme Color Picker */}
-              <div className="space-y-2">
-                <label className="text-[11px] font-black text-slate-700">থিম কালার</label>
-                <input type="color" value={themeColor} onChange={(e) => setThemeColor(e.target.value)} className="w-full h-10 rounded-xl cursor-pointer border-2 border-slate-300" />
-              </div>
-              {/* Header Color Picker */}
-              <div className="space-y-2">
-                <label className="text-[11px] font-black text-slate-700">হেডার কালার</label>
-                <input type="color" value={headerColor} onChange={(e) => setHeaderColor(e.target.value)} className="w-full h-10 rounded-xl cursor-pointer border-2 border-slate-300" />
-              </div>
-              {/* Footer Color Picker */}
-              <div className="space-y-2">
-                <label className="text-[11px] font-black text-slate-700">ফুটার কালার</label>
-                <input type="color" value={footerColor} onChange={(e) => setFooterColor(e.target.value)} className="w-full h-10 rounded-xl cursor-pointer border-2 border-slate-300" />
-              </div>
-            </div>
-          </div>
-
-          {/* SECTION 4: SINGLE ACTION BUTTON (No Mobile Preview Frame!) */}
+          {/* SECTION 4: SINGLE ACTION BUTTON (Full width across bottom) */}
           <div className="pt-2">
             <button
               type="submit"

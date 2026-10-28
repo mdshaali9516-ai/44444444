@@ -470,9 +470,9 @@ export const ResellerStorefrontView: React.FC<ResellerStorefrontViewProps> = ({ 
         {/* 3. HERO SHOWCASE SECTION (Eid, Luxury, Tech Banners) */}
         <HeroSection />
 
-        {/* 4. TRUST & SERVICES STRIP (Slimmer, Highlighted Border, Preserved Animations) */}
+        {/* 4. TRUST & SERVICES STRIP (Slimmer, Subtle Highlighted Border, Preserved Animations) */}
         <ScrollReveal className="w-full max-w-[1920px] mx-auto px-3 sm:px-6 lg:px-8 xl:px-10 pt-1 pb-1.5 sm:py-2" delay={0} duration={350}>
-          <div className="bg-white rounded-xl sm:rounded-2xl border-2 border-slate-300 py-1.5 sm:py-2 px-1 sm:px-3 shadow-xs grid grid-cols-4 divide-x divide-slate-200 items-center">
+          <div className="bg-white rounded-xl sm:rounded-2xl border border-slate-300 py-1.5 sm:py-2 px-1 sm:px-3 shadow-xs grid grid-cols-4 divide-x divide-slate-200 items-center">
             
             <div className="flex flex-col sm:flex-row items-center justify-center sm:justify-start text-center sm:text-left gap-1 sm:gap-2 p-0.5 sm:p-1.5 rounded-xl hover:bg-slate-50 transition-all duration-300">
               <div

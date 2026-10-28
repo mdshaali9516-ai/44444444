@@ -42,7 +42,7 @@ export const ResellerTrainingTab: React.FC = () => {
   }
 
   return (
-    <div className="space-y-5 pb-8 max-w-4xl mx-auto">
+    <div className="space-y-5 pb-8 w-full max-w-[1920px] mx-auto">
       {/* Header Section */}
       <div className="bg-white rounded-xl border border-slate-200/80 p-4 shadow-2xs flex items-center justify-between gap-3">
         <div className="flex items-center gap-3 min-w-0">

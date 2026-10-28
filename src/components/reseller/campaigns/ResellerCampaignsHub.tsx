@@ -61,7 +61,7 @@ export const ResellerCampaignsHub: React.FC<ResellerCampaignsHubProps> = ({
   }, [productsList, activeCatalogCategory, catalogSearchQuery]);
 
   return (
-    <div className="space-y-4 sm:space-y-6 w-full max-w-7xl mx-auto pb-10">
+    <div className="space-y-4 sm:space-y-6 w-full max-w-[1920px] mx-auto pb-10">
       
       {/* 3. INDEPENDENT FULL-SECTION PRODUCT CATALOG PAGE */}
       {viewingCatalogFor !== null ? (

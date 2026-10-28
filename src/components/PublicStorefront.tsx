@@ -394,9 +394,9 @@ export const PublicStorefront: React.FC = () => {
       {/* 1. Hero Showcase Banner */}
       <HeroSection />
 
-      {/* 2. Trust / Feature Badges Strip (Slimmer, Highlighted Border, Preserved Animations) */}
+      {/* 2. Trust / Feature Badges Strip (Slimmer, Subtle Highlighted Border, Preserved Animations) */}
       <ScrollReveal className="w-full max-w-[1920px] mx-auto px-3 sm:px-6 lg:px-8 xl:px-10 pt-1 pb-1.5 sm:py-2" delay={0} duration={350}>
-        <div className="bg-white rounded-xl sm:rounded-2xl border-2 border-slate-300 py-1.5 sm:py-2 px-1 sm:px-3 shadow-xs grid grid-cols-4 divide-x divide-slate-200 items-center">
+        <div className="bg-white rounded-xl sm:rounded-2xl border border-slate-300 py-1.5 sm:py-2 px-1 sm:px-3 shadow-xs grid grid-cols-4 divide-x divide-slate-200 items-center">
           
           {/* Badge 1: Reliable Products */}
           <div className="group flex flex-col sm:flex-row items-center justify-center sm:justify-start text-center sm:text-left gap-1 sm:gap-2 p-0.5 sm:p-1.5 rounded-xl hover:bg-emerald-50/60 hover:shadow-2xs hover:-translate-y-0.5 active:scale-95 transition-all duration-300 cursor-pointer">
@@ -494,43 +494,43 @@ export const PublicStorefront: React.FC = () => {
                   (p) => isCategoryMatch(p.categorySlug, cat.slug) && p.isActive !== false
                 ).length;
 
-                // Distinct Professional Color Themes per Category with Highlighted Borders
+                // Distinct Professional Color Themes per Category with Subtle Highlighted Borders
                 const isShop = cat.slug.toLowerCase().includes('shop') || idx === 0;
                 const isGadget = cat.slug.toLowerCase().includes('gadget') || cat.slug.toLowerCase().includes('gajet') || idx === 1;
 
                 const theme = isShop
                   ? {
                       bg: 'bg-gradient-to-br from-emerald-50 via-teal-50/40 to-green-50/50',
-                      border: 'border-2 border-emerald-400 shadow-xs',
-                      hoverBorder: 'hover:border-emerald-600 hover:shadow-md',
+                      border: 'border border-emerald-300 shadow-xs',
+                      hoverBorder: 'hover:border-emerald-500 hover:shadow-md',
                       badgeBg: 'bg-white/90 backdrop-blur-xs',
-                      badgeBorder: 'border-2 border-emerald-300',
+                      badgeBorder: 'border border-emerald-200',
                       badgeText: 'text-emerald-800',
                       btnBg: 'bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 shadow-xs',
-                      iconBg: 'bg-white/95 backdrop-blur-xs border-2 border-emerald-300 text-emerald-700 group-hover:bg-emerald-600 group-hover:text-white',
+                      iconBg: 'bg-white/95 backdrop-blur-xs border border-emerald-200 text-emerald-700 group-hover:bg-emerald-600 group-hover:text-white',
                       IconComponent: Shirt,
                     }
                   : isGadget
                   ? {
                       bg: 'bg-gradient-to-br from-sky-50 via-blue-50/40 to-cyan-50/50',
-                      border: 'border-2 border-sky-400 shadow-xs',
-                      hoverBorder: 'hover:border-sky-600 hover:shadow-md',
+                      border: 'border border-sky-300 shadow-xs',
+                      hoverBorder: 'hover:border-sky-500 hover:shadow-md',
                       badgeBg: 'bg-white/90 backdrop-blur-xs',
-                      badgeBorder: 'border-2 border-sky-300',
+                      badgeBorder: 'border border-sky-200',
                       badgeText: 'text-sky-800',
                       btnBg: 'bg-gradient-to-r from-sky-600 to-blue-600 hover:from-sky-700 hover:to-blue-700 shadow-xs',
-                      iconBg: 'bg-white/95 backdrop-blur-xs border-2 border-sky-300 text-sky-700 group-hover:bg-sky-600 group-hover:text-white',
+                      iconBg: 'bg-white/95 backdrop-blur-xs border border-sky-200 text-sky-700 group-hover:bg-sky-600 group-hover:text-white',
                       IconComponent: Smartphone,
                     }
                   : {
                       bg: 'bg-gradient-to-br from-purple-50 via-fuchsia-50/40 to-violet-50/50',
-                      border: 'border-2 border-purple-400 shadow-xs',
-                      hoverBorder: 'hover:border-purple-600 hover:shadow-md',
+                      border: 'border border-purple-300 shadow-xs',
+                      hoverBorder: 'hover:border-purple-500 hover:shadow-md',
                       badgeBg: 'bg-white/90 backdrop-blur-xs',
-                      badgeBorder: 'border-2 border-purple-300',
+                      badgeBorder: 'border border-purple-200',
                       badgeText: 'text-purple-800',
                       btnBg: 'bg-gradient-to-r from-purple-600 to-violet-600 hover:from-purple-700 hover:to-violet-700 shadow-xs',
-                      iconBg: 'bg-white/95 backdrop-blur-xs border-2 border-purple-300 text-purple-700 group-hover:bg-purple-600 group-hover:text-white',
+                      iconBg: 'bg-white/95 backdrop-blur-xs border border-purple-200 text-purple-700 group-hover:bg-purple-600 group-hover:text-white',
                       IconComponent: Package,
                     };
 
