@@ -44,20 +44,6 @@ export const ResellerCatalogTab: React.FC<ResellerCatalogTabProps> = ({
 }) => {
   const { lang, employee, brandSettings, subsections, categories, wishlistItems, toggleWishlist, showToast, publicSearch, resellerPreviewProduct, setResellerPreviewProduct } = useApp();
 
-  if (resellerPreviewProduct !== null) {
-    return (
-      <ResellerProductPreviewModal
-        product={resellerPreviewProduct}
-        isOpen={true}
-        onClose={() => setResellerPreviewProduct(null)}
-        onTakeForSelling={(prod) => {
-          setResellerPreviewProduct(null);
-          onTakeForSelling(prod);
-        }}
-      />
-    );
-  }
-
   // Navigation View: 'public-home' (Public Home Page) | 'reseller-catalog' (Reseller Catalog Panel)
   const [currentView, setCurrentView] = useState<'public-home' | 'reseller-catalog'>(() => {
     if (typeof window !== 'undefined' && sessionStorage.getItem('tawzoon_reseller_is_adding_to_order') === 'true') {
@@ -732,6 +718,23 @@ ${desc ? `\n📝 পণ্যের বিবরণ:\n${desc}\n` : ''}
   };
 
   // -------------------------------------------------------------------------
+  // VIEW 0: DEDICATED PRODUCT PREVIEW MODAL (Rendered after all hooks have run)
+  // -------------------------------------------------------------------------
+  if (resellerPreviewProduct !== null) {
+    return (
+      <ResellerProductPreviewModal
+        product={resellerPreviewProduct}
+        isOpen={true}
+        onClose={() => setResellerPreviewProduct(null)}
+        onTakeForSelling={(prod) => {
+          setResellerPreviewProduct(null);
+          onTakeForSelling(prod);
+        }}
+      />
+    );
+  }
+
+  // -------------------------------------------------------------------------
   // VIEW 1: PUBLIC STOREFRONT HOME PAGE (With Reseller Product Cards for Favorited items)
   // -------------------------------------------------------------------------
   if (currentView === 'public-home') {
@@ -744,64 +747,64 @@ ${desc ? `\n📝 পণ্যের বিবরণ:\n${desc}\n` : ''}
         <HeroSection />
 
         {/* 2. Trust / Feature Badges Strip (Interactive UI Animation on Hover/Touch) */}
-        <div className="max-w-[1200px] mx-auto px-3 sm:px-6 lg:px-8 pt-1 pb-2 sm:py-3">
-          <div className="bg-white rounded-xl sm:rounded-2xl border border-slate-200/80 py-2 sm:py-3 px-1 sm:px-4 shadow-xs grid grid-cols-4 divide-x divide-slate-100 items-center">
+        <div className="w-full max-w-[1920px] mx-auto px-3 sm:px-6 lg:px-8 xl:px-10 pt-1 pb-1.5 sm:py-2">
+          <div className="bg-white rounded-xl sm:rounded-2xl border border-slate-300 py-1.5 sm:py-2 px-1 sm:px-3 shadow-xs grid grid-cols-4 divide-x divide-slate-200 items-center">
             
             {/* Badge 1: Reliable Products */}
-            <div className="group flex flex-col sm:flex-row items-center justify-center sm:justify-start text-center sm:text-left gap-1 sm:gap-2.5 p-1 sm:p-2 rounded-xl hover:bg-emerald-50/60 hover:shadow-2xs hover:-translate-y-0.5 active:scale-95 transition-all duration-300 cursor-pointer">
-              <div className="w-6.5 h-6.5 sm:w-8 sm:h-8 rounded-lg bg-emerald-50 flex items-center justify-center shrink-0 border border-emerald-100/80 group-hover:bg-[#009245] group-hover:text-white group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-3xs">
-                <ShieldCheck className="w-3.5 h-3.5 sm:w-4.5 sm:h-4.5 text-[#009245] group-hover:text-white transition-colors duration-300" />
+            <div className="group flex flex-col sm:flex-row items-center justify-center sm:justify-start text-center sm:text-left gap-1 sm:gap-2 p-0.5 sm:p-1.5 rounded-xl hover:bg-emerald-50/60 hover:shadow-2xs hover:-translate-y-0.5 active:scale-95 transition-all duration-300 cursor-pointer">
+              <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-emerald-50 flex items-center justify-center shrink-0 border border-emerald-150 group-hover:bg-[#009245] group-hover:text-white group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-3xs">
+                <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#009245] group-hover:text-white transition-colors duration-300" />
               </div>
               <div className="min-w-0">
-                <h4 className="text-[9px] sm:text-xs md:text-sm font-bold text-slate-900 group-hover:text-[#009245] leading-tight transition-colors duration-300">
+                <h4 className="text-[9px] sm:text-[11px] md:text-xs font-bold text-slate-900 group-hover:text-[#009245] leading-tight transition-colors duration-300">
                   {lang === 'bn' ? 'নির্ভরযোগ্য পণ্য' : 'Authentic'}
                 </h4>
-                <p className="text-[8px] sm:text-[11px] text-slate-500 mt-0.5 hidden md:block">
+                <p className="text-[7.5px] sm:text-[10px] text-slate-500 mt-0.5 hidden md:block">
                   {lang === 'bn' ? '১০০% মানসম্মত' : '100% Quality'}
                 </p>
               </div>
             </div>
 
             {/* Badge 2: Nationwide Delivery */}
-            <div className="group flex flex-col sm:flex-row items-center justify-center sm:justify-start text-center sm:text-left gap-1 sm:gap-2.5 p-1 sm:p-2 rounded-xl hover:bg-emerald-50/60 hover:shadow-2xs hover:-translate-y-0.5 active:scale-95 transition-all duration-300 cursor-pointer">
-              <div className="w-6.5 h-6.5 sm:w-8 sm:h-8 rounded-lg bg-emerald-50 flex items-center justify-center shrink-0 border border-emerald-100/80 group-hover:bg-[#009245] group-hover:text-white group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-3xs">
-                <Truck className="w-3.5 h-3.5 sm:w-4.5 sm:h-4.5 text-[#009245] group-hover:text-white transition-colors duration-300" />
+            <div className="group flex flex-col sm:flex-row items-center justify-center sm:justify-start text-center sm:text-left gap-1 sm:gap-2 p-0.5 sm:p-1.5 rounded-xl hover:bg-emerald-50/60 hover:shadow-2xs hover:-translate-y-0.5 active:scale-95 transition-all duration-300 cursor-pointer">
+              <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-emerald-50 flex items-center justify-center shrink-0 border border-emerald-150 group-hover:bg-[#009245] group-hover:text-white group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-3xs">
+                <Truck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#009245] group-hover:text-white transition-colors duration-300" />
               </div>
               <div className="min-w-0">
-                <h4 className="text-[9px] sm:text-xs md:text-sm font-bold text-slate-900 group-hover:text-[#009245] leading-tight transition-colors duration-300">
+                <h4 className="text-[9px] sm:text-[11px] md:text-xs font-bold text-slate-900 group-hover:text-[#009245] leading-tight transition-colors duration-300">
                   {lang === 'bn' ? 'সারা দেশে ডেলিভারি' : 'Nationwide'}
                 </h4>
-                <p className="text-[8px] sm:text-[11px] text-slate-500 mt-0.5 hidden md:block">
+                <p className="text-[7.5px] sm:text-[10px] text-slate-500 mt-0.5 hidden md:block">
                   {lang === 'bn' ? 'দ্রুত ও নিরাপদ' : 'Fast Delivery'}
                 </p>
               </div>
             </div>
 
             {/* Badge 3: Easy Return */}
-            <div className="group flex flex-col sm:flex-row items-center justify-center sm:justify-start text-center sm:text-left gap-1 sm:gap-2.5 p-1 sm:p-2 rounded-xl hover:bg-emerald-50/60 hover:shadow-2xs hover:-translate-y-0.5 active:scale-95 transition-all duration-300 cursor-pointer">
-              <div className="w-6.5 h-6.5 sm:w-8 sm:h-8 rounded-lg bg-emerald-50 flex items-center justify-center shrink-0 border border-emerald-100/80 group-hover:bg-[#009245] group-hover:text-white group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-3xs">
-                <RotateCcw className="w-3 h-3 sm:w-4 sm:h-4 text-[#009245] group-hover:text-white transition-colors duration-300" />
+            <div className="group flex flex-col sm:flex-row items-center justify-center sm:justify-start text-center sm:text-left gap-1 sm:gap-2 p-0.5 sm:p-1.5 rounded-xl hover:bg-emerald-50/60 hover:shadow-2xs hover:-translate-y-0.5 active:scale-95 transition-all duration-300 cursor-pointer">
+              <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-emerald-50 flex items-center justify-center shrink-0 border border-emerald-150 group-hover:bg-[#009245] group-hover:text-white group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-3xs">
+                <RotateCcw className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#009245] group-hover:text-white transition-colors duration-300" />
               </div>
               <div className="min-w-0">
-                <h4 className="text-[9px] sm:text-xs md:text-sm font-bold text-slate-900 group-hover:text-[#009245] leading-tight transition-colors duration-300">
+                <h4 className="text-[9px] sm:text-[11px] md:text-xs font-bold text-slate-900 group-hover:text-[#009245] leading-tight transition-colors duration-300">
                   {lang === 'bn' ? 'সহজ রিটার্ন' : 'Easy Return'}
                 </h4>
-                <p className="text-[8px] sm:text-[11px] text-slate-500 mt-0.5 hidden md:block">
+                <p className="text-[7.5px] sm:text-[10px] text-slate-500 mt-0.5 hidden md:block">
                   {lang === 'bn' ? '৭ দিনের মধ্যে' : '7 Days'}
                 </p>
               </div>
             </div>
 
             {/* Badge 4: 24/7 Support */}
-            <div className="group flex flex-col sm:flex-row items-center justify-center sm:justify-start text-center sm:text-left gap-1 sm:gap-2.5 p-1 sm:p-2 rounded-xl hover:bg-emerald-50/60 hover:shadow-2xs hover:-translate-y-0.5 active:scale-95 transition-all duration-300 cursor-pointer">
-              <div className="w-6.5 h-6.5 sm:w-8 sm:h-8 rounded-lg bg-emerald-50 flex items-center justify-center shrink-0 border border-emerald-100/80 group-hover:bg-[#009245] group-hover:text-white group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-3xs">
-                <Headphones className="w-3.5 h-3.5 sm:w-4.5 sm:h-4.5 text-[#009245] group-hover:text-white transition-colors duration-300" />
+            <div className="group flex flex-col sm:flex-row items-center justify-center sm:justify-start text-center sm:text-left gap-1 sm:gap-2 p-0.5 sm:p-1.5 rounded-xl hover:bg-emerald-50/60 hover:shadow-2xs hover:-translate-y-0.5 active:scale-95 transition-all duration-300 cursor-pointer">
+              <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-emerald-50 flex items-center justify-center shrink-0 border border-emerald-150 group-hover:bg-[#009245] group-hover:text-white group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-3xs">
+                <Headphones className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#009245] group-hover:text-white transition-colors duration-300" />
               </div>
               <div className="min-w-0">
-                <h4 className="text-[9px] sm:text-xs md:text-sm font-bold text-slate-900 group-hover:text-[#009245] leading-tight transition-colors duration-300">
+                <h4 className="text-[9px] sm:text-[11px] md:text-xs font-bold text-slate-900 group-hover:text-[#009245] leading-tight transition-colors duration-300">
                   {lang === 'bn' ? '২৪/৭ সাপোর্ট' : '24/7 Support'}
                 </h4>
-                <p className="text-[8px] sm:text-[11px] text-slate-500 mt-0.5 hidden md:block">
+                <p className="text-[7.5px] sm:text-[10px] text-slate-500 mt-0.5 hidden md:block">
                   {lang === 'bn' ? 'যে কোনো সময়' : 'Help Anytime'}
                 </p>
               </div>
